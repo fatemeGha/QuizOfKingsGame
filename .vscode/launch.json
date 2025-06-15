@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "type": "java",
+          "name": "Launch Quiz App",
+          "request": "launch",
+          "mainClass": "com.quizgame.Controller.App",
+          "vmArgs": "--module-path \"C:/Program Files (x86)/javafx-sdk-21.0.7/lib\" --add-modules javafx.controls,javafx.fxml,javafx.graphics",
+          "projectName": "quiz-app"
+      }
+  ]
+}

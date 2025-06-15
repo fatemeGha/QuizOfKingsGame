@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizgame.Controller.ProfilePageController">
+   <children>
+      <TextField fx:id="userNameTextField" editable="false" layoutX="151.0" layoutY="41.0" />
+      <TextField fx:id="passTextField" editable="false" layoutX="151.0" layoutY="88.0" />
+      <TextField fx:id="emailTextField" editable="false" layoutX="151.0" layoutY="137.0" />
+      <Label layoutX="91.0" layoutY="45.0" text="user name" />
+      <Label layoutX="91.0" layoutY="92.0" text="password" />
+      <Label layoutX="91.0" layoutY="141.0" text="email" />
+      <Label layoutX="95.0" layoutY="262.0" text="birthday" />
+      <DatePicker fx:id="birthdayDatePicker" editable="false" layoutX="151.0" layoutY="258.0" promptText="birthday" />
+      <Label layoutX="65.0" layoutY="304.0" text="registration date" />
+      <DatePicker fx:id="registrationDatePicker" editable="false" layoutX="151.0" layoutY="300.0" />
+      <Button fx:id="EditUserNameBTN" layoutX="306.0" layoutY="41.0" mnemonicParsing="false" onAction="#EditUserName" prefHeight="25.0" prefWidth="51.0" text="Done" />
+      <Button layoutX="65.0" layoutY="454.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="MainPageBTN" layoutX="226.0" layoutY="454.0" mnemonicParsing="false" onAction="#goToMainPage" text="Main page" />
+      <Button fx:id="profileBTN" layoutX="551.0" layoutY="454.0" mnemonicParsing="false" onAction="#goToProfilePage" text="edit profile" />
+      <Button fx:id="addQuestionBTN" layoutX="377.0" layoutY="454.0" mnemonicParsing="false" onAction="#goToQuestionPage" text="add question" />
+      <Button fx:id="passEditBTN" layoutX="306.0" layoutY="88.0" mnemonicParsing="false" onAction="#passEdit" prefHeight="25.0" prefWidth="51.0" text="Edit" />
+      <Button fx:id="emailEditBTN" layoutX="306.0" layoutY="137.0" mnemonicParsing="false" onAction="#emailEdit" prefHeight="25.0" prefWidth="51.0" text="Edit" />
+      <Button fx:id="EditBirthdayBTN" layoutX="342.0" layoutY="258.0" mnemonicParsing="false" onAction="#EditBirthday" prefHeight="25.0" prefWidth="51.0" text="Edit" />
+      <TextField fx:id="phonTextField" editable="false" layoutX="152.0" layoutY="178.0" />
+      <Label layoutX="69.0" layoutY="182.0" text="phon number" />
+      <Button fx:id="editPhonBTN" layoutX="306.0" layoutY="178.0" mnemonicParsing="false" onAction="#editPhon" prefHeight="25.0" prefWidth="51.0" text="Edit" />
+      <Label layoutX="88.0" layoutY="220.0" text="you will get 200 score by registering your phone number" />
+      <TextField fx:id="repeatPassTextField" layoutX="484.0" layoutY="88.0" prefHeight="25.0" prefWidth="174.0" visible="false" />
+      <Label fx:id="repeatPassLBL" layoutX="384.0" layoutY="92.0" text="Repeat password" visible="false" />
+      <Label fx:id="userNameError" layoutX="152.0" layoutY="66.0" text="Error" textFill="RED" visible="false" />
+      <Label fx:id="phonError" layoutX="152.0" layoutY="203.0" text="Error" textFill="RED" visible="false" />
+      <Label fx:id="emailError" layoutX="152.0" layoutY="162.0" text="Error" textFill="RED" visible="false" />
+      <Label fx:id="passError" layoutX="152.0" layoutY="112.0" text="Error" textFill="RED" visible="false" />
+      <Label fx:id="repeatPassError" layoutX="490.0" layoutY="113.0" text="Error" textFill="RED" visible="false" />
+   </children>
+</AnchorPane>
