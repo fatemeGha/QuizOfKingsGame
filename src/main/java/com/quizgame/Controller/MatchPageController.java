@@ -50,6 +50,8 @@ public class MatchPageController {
     private ScrollPane scrollPane;
     @FXML
     private Button backBTN;
+    @FXML
+    private Button playBTN;
 
     private Match match;
     private Player player1; /// me
@@ -60,6 +62,11 @@ public class MatchPageController {
     private int player1ScoreNumber;
     private int player2ScoreNumber;
     private Round currentRound ;
+    private Stage stage;
+
+    void setStage(Stage stage){
+        this.stage =stage;
+    }
 
     void setData(Match match, Player player1, Player player2, int playerNumber) {
         this.match = match;
@@ -78,7 +85,6 @@ public class MatchPageController {
             this.player1 = player2; // far
         }
         this.playerNumber = playerNumber;
-        System.out.println(playerNumber);
         show();
     }
 
@@ -157,6 +163,7 @@ public class MatchPageController {
 
                 if (playerNumber == 1 && !rounds.get(i).getPlayer2Done()
                         || playerNumber == 2 && !rounds.get(i).getPlayer1Done()) {
+                    playBTN.setVisible(false);
                     showRectAngle(0, HBoxs[i]);
 
                 } else {
@@ -172,12 +179,10 @@ public class MatchPageController {
 
                     HBoxs[i].getChildren().addAll(circle4, circle5, circle6);
 
-                    System.out.println("HBoxs[i].getChildren().add(circle4)");
                 }
             }
         }
 
-        System.out.println("URL rad shod" + match.getMatchID());
 
     }
 

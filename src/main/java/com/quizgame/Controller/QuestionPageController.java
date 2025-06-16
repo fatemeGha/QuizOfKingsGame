@@ -64,10 +64,12 @@ public class QuestionPageController {
     private Question question;
     private Round round;
     private Match match;
-    int qNumber;
-    Player player;
-    ArrayList<Question> questions;
-    int playerNumber;
+    private int qNumber;
+    private Player player;
+    private ArrayList<Question> questions;
+    private int playerNumber;
+    private boolean answered;
+    private Timeline timeline;
 
     void setData(Question question, Round round, Match match, int qNumber, ArrayList<Question> questions,
             Player player, int playerNumber) {
@@ -78,8 +80,7 @@ public class QuestionPageController {
         this.questions = questions;
         this.player = player;
         this.playerNumber = playerNumber;
-        System.out.println(round.getPlayer1Done() + "round.getPlayer1Done()");
-        System.out.println(round.getPlayer2Done() + "round.getPlayer2Done()");
+        this.answered = false;
         QuestionText.setText(question.getQuestion_text());
         OptionA.setText(question.getOption_a());
         OptionB.setText(question.getOption_b());
@@ -128,13 +129,14 @@ public class QuestionPageController {
                 }));
 
         timeline.setOnFinished(e -> {
-            submitOption(question.getCorrect_option().compareTo("A") == 0 ? "B" : "A" , e, 
+            if(!answered){
+            submitOption(question.getCorrect_option() , e, 
             question.getCorrect_option().compareTo("A") == 0 ? OptionA : 
             question.getCorrect_option().compareTo("B") == 0 ? OptionB : 
             question.getCorrect_option().compareTo("A") == 0 ? OptionC :
-            OptionD, false);
+            OptionD);}
         });
-
+        this.timeline = timeline;
         timeline.play();
 
     }
@@ -153,26 +155,30 @@ public class QuestionPageController {
 
     @FXML
     void OptionAClicked(ActionEvent event) {
-        submitOption("A", event, OptionA, true);
+        answered = true;
+        submitOption("A", event, OptionA);
     }
 
     @FXML
     void OptionBClicked(ActionEvent event) {
-        submitOption("B", event, OptionB, true);
+        answered = true;
+        submitOption("B", event, OptionB);
     }
 
     @FXML
     void OptionCClicked(ActionEvent event) {
-        submitOption("C", event, OptionC, true);
+        answered = true;
+        submitOption("C", event, OptionC);
     }
 
     @FXML
     void OptionDClicked(ActionEvent event) {
-        submitOption("D", event, OptionD, true);
+        answered = true;
+        submitOption("D", event, OptionD);
     }
 
-    void submitOption(String option, Event eventOption, Button optionBTN, boolean isInTime) {
-        if (isInTime) {
+    void submitOption(String option, Event eventOption, Button optionBTN) {
+        if (!answered) {
             showOptionIsCorrect(option, eventOption, optionBTN);
         }else{
             showOptionIsCorrect(question.getCorrect_option(), eventOption, optionBTN); 
@@ -234,6 +240,7 @@ public class QuestionPageController {
         pause.setOnFinished(event -> {
             showNextQuestion(optionBTN);
         });
+        timeline.stop();
         pause.play();
     }
 
@@ -261,8 +268,7 @@ public class QuestionPageController {
                     round.getPlayerQ2(playerNumber), round.getPlayerQ3(playerNumber));
             match.updatePlayer1Score(match.getPlayer1Score());
             match.updatePlayer2Score(match.getPlayer2Score());
-            System.out.println("playerID = " + player.getID());
-            FXMLLoader fxmlLoader = new FXMLLoader(QuestionPageController.class
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass()
                     .getResource("/com/quizgame/Controller/MatchPage" + ".fxml"));
             Parent root;
             try {
@@ -271,11 +277,11 @@ public class QuestionPageController {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 MatchPageController controller = fxmlLoader.getController();
-                System.out.println("player number = " + playerNumber + "  round Number = " + round.getRound_number());
+
                 if (playerNumber == 1 && round.getRound_number() == 1) {
                     controller.setData(match, player, new Player(), playerNumber);
                 } else if (playerNumber == 1 && round.getRound_number() != 1) {
-                    controller.setData(match, match.getPlayer2(), match.getPlayer2(), playerNumber);
+                    controller.setData(match, match.getPlayer1(), match.getPlayer2(), playerNumber);
                 } else if (playerNumber == 2) {
                     controller.setData(match, match.getPlayer1(), player, playerNumber);
                 }

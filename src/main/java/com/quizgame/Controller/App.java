@@ -9,10 +9,8 @@ import java.io.IOException;
 
 public class App extends Application {
     private static Scene scene;
-
-
+    
     ////// emtiaz dar halat hidden malum nabashe
-    ///  ta raghib bazi nakarde man natunam dor bad ro shro konam
     ///  barresi soal dokme
     /// barresi soal anjam
     /// tanzim avatar
@@ -20,8 +18,13 @@ public class App extends Application {
     /// dour haye jadid online ezafe beshe
     /// namayesh jadval
     /// emtiaz har nafar
+    /// index gozari
+    /// sakhti soal entekhab
+    /// sakhti soal tanzimat
+    /// hazf karbar
     /// 
     /// 
+    /////  ta raghib bazi nakarde man natunam dor bad ro shro konam
     //////// edit tarikh
     ////// didan soal ha pazirofte ya na 
     ////// /// sakht soal 
